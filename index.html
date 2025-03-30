@@ -205,66 +205,20 @@
             transform: scale(1);
         }
 
-        .sorry-face {
+        .emoji-container {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .emoji {
             width: 120px;
             height: 120px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .face-circle {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: #ffd54f;
-            box-shadow: 0 0 15px rgba(255, 213, 79, 0.5);
-        }
-
-        .eyes {
-            position: absolute;
-            top: 40px;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .eye {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #5d4037;
-            animation: blink 4s infinite;
-        }
-
-        .mouth {
-            position: absolute;
-            bottom: 30px;
-            left: 40px;
-            width: 40px;
-            height: 20px;
-            border-bottom: 8px solid #5d4037;
-            border-radius: 0 0 20px 20px;
-        }
-
-        .tear {
-            position: absolute;
-            top: 60px;
-            width: 10px;
-            height: 20px;
-            background-color: #4fc3f7;
-            border-radius: 50%;
-            animation: tearDrop 3s infinite;
-        }
-
-        .tear-left {
-            left: 25px;
-            animation-delay: 0.5s;
-        }
-
-        .tear-right {
-            right: 25px;
-            animation-delay: 1s;
+            object-fit: contain;
+            animation: pulse 3s infinite;
         }
 
         .sorry-text {
@@ -301,16 +255,6 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes blink {
-            0%, 45%, 55%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(0.1); }
-        }
-
-        @keyframes tearDrop {
-            0%, 100% { transform: translateY(0) scale(0.8); opacity: 0; }
-            50% { transform: translateY(30px) scale(1); opacity: 1; }
-        }
-
         @keyframes sway {
             from { transform: rotate(-5deg); }
             to { transform: rotate(5deg); }
@@ -327,6 +271,12 @@
             0% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         @media (max-width: 768px) {
@@ -348,7 +298,7 @@
                 width: 240px;
                 height: 240px;
             }
-            .sorry-face {
+            .emoji {
                 width: 100px;
                 height: 100px;
             }
@@ -368,43 +318,32 @@
     <div class="container">
         <h1 class="title">Selamat Hari Raya Idul Fitri 1446 H</h1>
         <p class="message">
-            Dalam beningnya embun pagi <br>
-            di bawah cahaya yang suci <br>
-            terhampar sejuta khilaf di relung hati <br>
-            tersusun kata yang tak selalu terjaga. <br>
+            dalam dinginya embun pagi <br>
+            serta mentari yang menyinari <br>
+            terdapat khilaf pada diri   <br>
+            dan tak bisa beri yang terbaik  <br>
             <br>
-            Ramadan telah usai, lebaran pun datang <br>
-            izinkan hati ini merendah <br>
-            memohon maaf atas segala khilaf <br>
-            baik yang tersengaja maupun tidak. <br>
-            <br>
-            Seperti embun yang membasahi debu <br>
-            seperti senyum yang menyapa rindu <br>
-            semoga Idul Fitri membawa kebahagiaan <br>
-            menyatukan kembali hati tlah lama jauh. <br>
+            hendak hati yang baru <br>
+            meminta maaf atas segala yang terjadi<br>
+            seperti gugur pada daun layu<br>
+            menghilang diterpa angin <br>
             <br>
             Taqabbalallahu minna wa minkum, <br>
             Mohon maaf lahir dan batin. <br>
         </p>
-        <button class="button">Mohon Maafkeun</button>
+        <button class="button">Maafkeun</button>
     </div>
 
-    <!-- Sorry Animation Popup -->
+    <!-- Sorry Animation Popup with Emoji -->
     <div class="sorry-animation">
         <div class="sorry-animation-content">
             <button class="close-button">×</button>
-            <div class="sorry-face">
-                <div class="face-circle"></div>
-                <div class="eyes">
-                    <div class="eye"></div>
-                    <div class="eye"></div>
-                </div>
-                <div class="tear tear-left"></div>
-                <div class="tear tear-right"></div>
-                <div class="mouth"></div>
+            <div class="emoji-container">
+                <img src="https://em-content.zobj.net/thumbs/120/apple/325/pleading-face_1f97a.png" alt="Emoji Sedih" class="emoji">
             </div>
-            <div class="sorry-text">Mohon Maaf</div>
-            <div class="sorry-subtext">Atas segala salah dan khilaf selama ini</div>
+            <div class="sorry-text">Minta Maap :(</div>
+            <div class="sorry-subtext">Forgive me <br> 
+                If I ever hurt you</div>
         </div>
     </div>
 
@@ -487,17 +426,6 @@
                 sorryAnimation.classList.remove('show');
             }
         });
-        
-        // Add pulse animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.1); }
-                100% { transform: scale(1); }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
